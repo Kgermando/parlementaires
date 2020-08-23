@@ -70,7 +70,7 @@
         text-align: center;
     }
     .lois-detail-img {
- 
+        height: 200px;
         width: 100%;
     }
 }
