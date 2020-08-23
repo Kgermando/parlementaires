@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ sondage.sondage_title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class=" lois-detail">
+        <h1 class="lois-detail-header p-3">{{ sondage.sondage_title }}</h1>
+        <img src="{{sondage.sondage_image.url}}" alt="{{ sondage.sondage_title }}" class=" card-img lois-detail-img"/>
+        <div class="pt-2">
+            <p class="ltext-muted">Proposée par {{ sondage.propostion_nom }}</p>
+        </div>
+        
+        <div class="lois-detail-content p-3">
+            <p class="lois-detail-body text-left">{{ sondage.sondage_content  }}</p>
+            <p class="text-muted ">{{ sondage.created }}</p>
+        </div>
+
+        <div class=" vote-result">
+            <div class=" vote-person">
+                <div class="alert alert-primary" role="alert">
+                    <div class=" vote-person-title">Accord</div>
+                    <div class=" vote-person-vote"><strong>{{ sondage.vote_yes }}</strong></div>
+                </div>
+            </div>
+            <div class=" vote-person">
+                <div class="alert alert-danger" role="alert">
+                    <div class=" vote-person-title">Pas d'accord</div>
+                    <div class=" vote-person-vote"><strong>{{ sondage.vote_no }}</strong></div>
+                </div>
+            </div>
+            <div class=" vote-person">
+                <div class="alert alert-success" role="alert">
+                    <div class=" vote-person-title">Neutre</div>
+                    <div class=" vote-person-vote">{{ sondage.vote_null }}</div>
+                </div>
+            </div>
+        </div>
+        <div class=" ">
+            <div class="alert alert-dark" role="alert">
+                <div class=" vote-total">Total: {{ sondage.total }}</div>
+            </div>
+        </div>
+
+        <div class=" p-4">
+            {% if user.is_active %}
+            <h3 class=" vote-title p-3">Donnez votre opinion ici</h3>
+            <div class=" vote-person">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group radio vote-result">
+                        <div class=" vote-person">
+                            <div class="alert alert-primary" role="alert">
+                                <div class=" vote-title">Je suis d'accord</div>
+                                <div class=" vote-person-vote"> 
+                                    <input type="radio" name="sondage" value="option1" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" vote-person">
+                            <div class="alert alert-danger" role="alert">
+                                <div class=" vote-title">je ne suis pas d'accord</div>
+                                <div class=" vote-person-vote">
+                                    <input type="radio" name="sondage" value="option2">
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class=" vote-person">
+                            <div class="alert alert-success" role="alert">
+                                <div class=" vote-title">je m'abstiens</div>
+                                <div class=" vote-person-vote">
+                                    <input type="radio" name="sondage" value="option3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" vote-btn">
+                        <button type="submit" class="btn btn-info">
+                                Soumettre
+                        </button>
+                    </div>
+                </form>
+            </div>
+            {% else %}
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">Oups!</h4>
+                    <p>Pour donner votre opinion, veuillez d'abord vous connecter, si vous n'avez pas encore de 
+                        compte merci de s'enregistrer.
+                    </p>
+                </div>
+            {% endif %}
+        </div>
+
+
+    </div>
+
+
+
+
+</div>
+{% endblock %}

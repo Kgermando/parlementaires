@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section id="register" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header bg-primary text-white login__label">
+              <h4><i class="fa fa-user-plus fa-2x" aria-hidden="true"></i> Inscriptions</h4>
+            </div>
+            <div class="card-body pb-0">
+                <!-- Alerts -->
+                {% include 'notifications/_alerts.html' %}
+                <form action="{% url 'register' %}" method="POST">
+                    {% csrf_token %}
+                  <div class="form-group">
+                  <label for="first_name">Nom</label>
+                  <input type="text" name="first_name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="last_name">Post-Nom</label>
+                  <input type="text" name="last_name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="username">Prénom</label>
+                  <input type="text" name="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" name="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="password2">Mot de passe</label>
+                  <input type="password" name="password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="password">Répéter votre mot de passe</label>
+                  <input type="password" name="password2" class="form-control" required>
+                </div>
+                <input type="submit" value="S'enregister" class="btn btn-secondary btn-block login__btn">
+                <div class="login__notreg">
+                  <span>Avez-vous déjà un compte?</span>
+                  <a class="text-right" href="{% url 'login' %}">Se connecter</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
