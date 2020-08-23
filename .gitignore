@@ -5,6 +5,7 @@ __pycache__/
 
 venv/
 media-root/
+static-root/
 # C extensions
 *.so
 
