@@ -1,5 +1,6 @@
+{% load static %}
+
 <!DOCTYPE html>
-    {% load static %}
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +16,8 @@
     <link rel="stylesheet" href="{% static 'css/about.css' %}">
     <link rel="stylesheet" href="{% static 'css/sondage.css' %}">
     <link rel="stylesheet" href="{% static 'css/team.css' %}">
-    <link rel="stylesheet" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}"> {% endcomment %}
+    
 </head>
 <body>
     {% include 'nav/toolbar.html' %}
