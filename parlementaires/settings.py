@@ -36,11 +36,11 @@ SECRET_KEY = '*_xs!*6_e^^1l$hyfpx$tg9u$)@az_781&ebd-y59_0-v%bh%w'
 # SECRET_KEY = get_env_variable('SECRET_KEY', '-kk=0-5_6#g9v!1@wv(vs!$ma%m3(m^_!fgbb1@7&&ck^oenxl')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = ['127.0.0.1', '68.183.20.154' ]
+ALLOWED_HOSTS = ['127.0.0.1', '68.183.20.154']
 
 # Application definition
 
@@ -95,23 +95,23 @@ WSGI_APPLICATION = 'parlementaires.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'parlementaires',
-        'USER': 'parlementaires',
-        'PASSWORD': 'gk0813530838',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'parlementaires',
+#         'USER': 'parlementaires',
+#         'PASSWORD': 'gk0813530838',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 
 # Password validation
@@ -151,12 +151,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-#Messages
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "static-root")
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media-root')
+
+# Messages
 from django.contrib.messages import constants as messages
 
 MESSAGE_TAGS = {

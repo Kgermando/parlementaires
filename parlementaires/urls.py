@@ -20,6 +20,23 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import HomeSitemap, LoisSitemap, ContactFormSitemap, ActualiteSitemap, OurTeamSitemap, SondageSitemap
+
+sitemaps = {
+    'home-view': HomeSitemap,
+    'lois-view' : LoisSitemap,
+    'contact-form'  : ContactFormSitemap,
+    'actualite-view' : ActualiteSitemap,
+    'team' : OurTeamSitemap,
+    'sondage-view' : SondageSitemap,
+    }
+
+sitemap_urls = [
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+        name='django.contrib.sitemaps.views.sitemap'),
+    ]
+
 urlpatterns = [
     path('', include('app.urls')),
     path('accounts/', include('accounts.urls')),
@@ -29,5 +46,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
+urlpatterns += sitemap_urls
+
 if settings.DEBUG:
-    urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

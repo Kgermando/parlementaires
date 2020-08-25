@@ -18,6 +18,7 @@
                         <p class="card-title actu-card-header-text">
                             <a href="{{ actu.get_absolute_url }}"> {{ actu.actu_title|truncatechars:150 }}</a>
                         </p>
+                        <p class="card-text"><small class="text-muted">Il y a {{ actu.created|timesince }}</small></p>
                     </div>
                 </div>
             </div>
