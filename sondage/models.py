@@ -17,22 +17,16 @@ class Sondage(models.Model):
     #     from django.urls import reverse
     #     return reverse('sondage:sondage-view', args=[str(self.id)])
 
-    # def user_can_vote(self, user):
-    #     """ 
-    #         Return False if user already voted
-    #     """
-    #     user_votes = user.vote_set.all()
-    #     qs = user_votes.filter(poll=self)
-    #     if qs.exists():
-    #         return False
-    #     return True
-
-    # @property
-    # def get_vote_count(self):
-    #     return self.vote_set.count()
 
     def total(self):
         return self.vote_yes + self.vote_no + self.vote_null
 
     def __str__(self):
         return self.sondage_title
+
+class Vote(models.Model):
+    sondageID = models.ForeignKey(Sondage, on_delete=models.CASCADE)
+    userID = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    # def __str__(self):
+    #     return self.sondageID

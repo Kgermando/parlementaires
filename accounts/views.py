@@ -14,9 +14,9 @@ def login_view(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, "Vous êtes maintenant authentifié!")
-            return redirect('app:home')
+            return redirect('sondage:sondage')
         else:
-            messages.error(request, "Invalid credentials")
+            messages.error(request, "les informations d'identification invalides, vérifier votre prénom")
             return redirect('login')
     return render(request, 'accounts/login.html')
 
@@ -50,7 +50,7 @@ def register_view(request):
                     # return redirect('index')
 
                     user.save()
-                    messages.success(request, 'Fellicitation! Vous êtes maintenant enregistreé')
+                    messages.success(request, 'Congratulations! Vous êtes maintenant enregistrée! Veillez à present vous connecter')
                     return redirect('login')
         else:
             messages.error(request, 'le mot de passe ne corresponds pas')

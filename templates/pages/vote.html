@@ -43,6 +43,7 @@
         </div>
 
         <div class=" p-4">
+            {% include 'notifications/_alerts.html' %}
             {% if user.is_active %}
             <h3 class=" vote-title p-3">Donnez votre opinion ici</h3>
             <div class=" vote-person">

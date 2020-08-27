@@ -42,13 +42,13 @@
 }
 
 .lois-detail-img {
-    height: 400px;
+    height: auto;
+    width: auto;
 }
 
 .text-user {
     font-weight: 700;
 }
-
 
 .banner-comment {
     border-left: 6px solid red;

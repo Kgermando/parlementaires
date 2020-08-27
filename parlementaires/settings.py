@@ -36,11 +36,12 @@ SECRET_KEY = '*_xs!*6_e^^1l$hyfpx$tg9u$)@az_781&ebd-y59_0-v%bh%w'
 # SECRET_KEY = get_env_variable('SECRET_KEY', '-kk=0-5_6#g9v!1@wv(vs!$ma%m3(m^_!fgbb1@7&&ck^oenxl')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 ALLOWED_HOSTS = ['127.0.0.1', '68.183.20.154']
+
 
 # Application definition
 
@@ -51,6 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 
     'storages',
 
@@ -60,6 +63,7 @@ INSTALLED_APPS = [
     'ourteam',
     'sondage',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -147,6 +151,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+SITE_ID = 1
 
 # Messages
 from django.contrib.messages import constants as messages
