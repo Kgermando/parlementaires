@@ -8,21 +8,21 @@ from sondage.models import Sondage
 
 
 class LoisSitemap(Sitemap):
-    changefreq = 'weekly'
+    changefreq = 'daily'
     priority = 1.0
 
     def items(self):
         return Lois.objects.all()
 
 class ActualiteSitemap(Sitemap):
-    changefreq = 'weekly'
+    changefreq = 'daily'
     priority = 1.0
 
     def items(self):
         return Actualite.objects.all()
 
 class OurTeamSitemap(Sitemap):
-    changefreq = 'weekly'
+    changefreq = 'daily'
     priority = 1.0
 
     def items(self):
@@ -30,7 +30,7 @@ class OurTeamSitemap(Sitemap):
 
 
 class SondageSitemap(Sitemap):
-    changefreq = 'weekly'
+    changefreq = 'daily'
     priority = 1.0
 
     def items(self):
