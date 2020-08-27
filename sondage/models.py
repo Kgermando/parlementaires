@@ -13,9 +13,9 @@ class Sondage(models.Model):
     sondage_image = models.ImageField(upload_to='sondage_img/')
     created = models.DateTimeField(auto_now=True)
 
-    # def get_absolute_url(self):
-    #     from django.urls import reverse
-    #     return reverse('sondage:sondage-view', args=[str(self.id)])
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('sondage:vote', args=[str(self.id)])
 
 
     def total(self):

@@ -21,23 +21,18 @@ from django.contrib import admin
 from django.urls import path, include
 
 from django.contrib.sitemaps.views import sitemap
-from .sitemaps import HomeSitemap, LoisSitemap, ContactFormSitemap, ActualiteSitemap, OurTeamSitemap, SondageSitemap
+from .sitemaps import LoisSitemap, ActualiteSitemap, OurTeamSitemap, SondageSitemap, StaticViewSitemap
 
 sitemaps = {
-    'home-view': HomeSitemap,
     'lois-view' : LoisSitemap,
-    'contact-form'  : ContactFormSitemap,
     'actualite-view' : ActualiteSitemap,
     'team' : OurTeamSitemap,
     'sondage-view' : SondageSitemap,
+    'static': StaticViewSitemap,
     }
 
-sitemap_urls = [
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
-        name='django.contrib.sitemaps.views.sitemap'),
-    ]
-
 urlpatterns = [
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap'),
     path('', include('app.urls')),
     path('accounts/', include('accounts.urls')),
     path('actualite/', include('actualite.urls')),
@@ -45,8 +40,6 @@ urlpatterns = [
     path('sondage/', include('sondage.urls')),
     path('admin/', admin.site.urls),
 ]
-
-urlpatterns += sitemap_urls
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

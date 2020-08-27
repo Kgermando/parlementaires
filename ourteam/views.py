@@ -19,3 +19,4 @@ def team_view(request, team_id):
     }
     template_name = 'pages/team.html'
     return render(request, template_name, context)
+

@@ -15,5 +15,9 @@ class OurTeam(models.Model):
     team_created_date = models.DateTimeField(auto_now_add=True)
     team_updated_date = models.DateTimeField(auto_now=True)
 
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('ourteam:team', args=[str(self.id)])
+
     def __str__(self):
         return self.team_name
