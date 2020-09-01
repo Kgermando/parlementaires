@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -7,7 +8,16 @@ from sondage.models import Sondage, Vote
 
 # Create your views here.
 def sondage_view(request):
-    sondage_list = Sondage.objects.all().order_by('-created')
+    sondage = Sondage.objects.all().order_by('-created')
+    paginator = Paginator(sondage, 10)
+    page = request.GET.get('page')
+    try:
+        sondage_list = paginator.page(page)
+    except PageNotAnInteger:
+        sondage_list = paginator.page(1)
+    except EmptyPage:
+        sondage_list = paginator.page(paginator.num_pages)
+    
     context = {
         'sondage_list': sondage_list
     }

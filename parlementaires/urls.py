@@ -41,5 +41,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
+handler400 = 'handlers.views.handler400'
+handler403 = 'handlers.views.handler403'
+handler404 = 'handlers.views.handler404'
+handler500 = 'handlers.views.handler500' 
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

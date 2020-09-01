@@ -33,44 +33,24 @@
                 </div>
             {% endfor %}
         </div>
+        <div class="pagination d-flex justify-content-center py-4">
+            <span class="step-links">
+                {% if lois_list.has_previous %}          
+                    <a href="?page={{ lois_list.previous_page_number }}">page précédente</a>
+                {% endif %}
+
+                <span class="current">
+                {{ lois_list.number }}
+                </span>
+
+                {% if lois_list.has_next %}
+                    <a href="?page={{ lois_list.next_page_number }}">page suivante</a>
+                {% endif %}
+            </span>
+        </div>
     </div>
 </div>
-{% comment %} <div class="pagination">
-      <span class="step-links">
-        Partager{{ lois_list.paginator.num_pages }}page<br>
-        {% if lois_list.has_previous %}
-          {%ifnotequal lois_list.previous_page_number 1 %}
-            <a href="?page=1">Accueil</a>
-          {% endifnotequal %}
-            <a href="?page={{ lois_list.previous_page_number }}">Page précédente</a>
 
-        {% endif %}
-          <span class="current">
-             {{ lois_list.number }} page
-          </span>
-        {% if lois_list.has_next %}
-            <a href="?page={{ lois_list.next_page_number }}">Page suivante</a>
-            {%ifnotequal lois_list.next_page_number test_case.paginator.num_pages %}
-              <a href="?page={{ lois_list.paginator.num_pages}}">Queue</a>
-            {% endifnotequal %}
-        {% endif %}
-      </span>
-</div> {% endcomment %}
 
-<div class="pagination">
-    <span class="step-links">
-        {% if lois_list.has_previous %}          
-            <a href="?page={{ lois_list.previous_page_number }}">précédente</a>
-        {% endif %}
-
-        <span class="current">
-          {{ lois_list.number }}
-        </span>
-
-        {% if lois_list.has_next %}
-            <a href="?page={{ lois_list.next_page_number }}">suivante</a>
-        {% endif %}
-    </span>
-</div>
 
 {% endblock content %}

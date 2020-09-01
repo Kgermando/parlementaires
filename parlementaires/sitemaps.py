@@ -1,7 +1,7 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
-from app.models import Home, Lois, ContactForm
+from app.models import Lois
 from actualite.models import Actualite
 from ourteam.models import OurTeam
 from sondage.models import Sondage

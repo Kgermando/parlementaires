@@ -56,6 +56,21 @@
                 </div>
             {% endfor %}
         </div>
+        <div class="pagination d-flex justify-content-center py-4">
+            <span class="step-links">
+                {% if sondage_list.has_previous %}          
+                    <a href="?page={{ sondage_list.previous_page_number }}">page précédente</a>
+                {% endif %}
+
+                <span class="current">
+                {{ sondage_list.number }}
+                </span>
+
+                {% if sondage_list.has_next %}
+                    <a href="?page={{ sondage_list.next_page_number }}">page suivante</a>
+                {% endif %}
+            </span>
+        </div>
     </div>
 </div>
 {% endblock content %}
