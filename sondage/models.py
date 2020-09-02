@@ -28,5 +28,5 @@ class Vote(models.Model):
     sondageID = models.ForeignKey(Sondage, on_delete=models.CASCADE)
     userID = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    # def __str__(self):
-    #     return self.sondageID
+    def __str__(self):
+        return self.sondageID
